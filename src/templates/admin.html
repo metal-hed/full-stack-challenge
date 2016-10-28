@@ -1,0 +1,54 @@
+<h3 class="text-center">Admin View</h3>
+
+<hr>
+
+<div ng-hide="viewEmployee">
+    <button class="btn btn-success" ng-click="chooseEmployee()">Add Employee</button>
+
+    <br>
+
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+        </tr>
+        </thead>
+
+        <tr ng-repeat="e in employees" style="cursor: pointer">
+            <td ng-click="chooseEmployee(e)">{{e.name}}</td>
+            <td ng-click="chooseEmployee(e)">{{e.position}}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- Add Employee form -->
+<form class="form form-horizontal" ng-show="viewEmployee">
+
+    <!-- Name Field -->
+    <div class="form-group">
+        <label class="col-md-2">Name</label>
+        <div class="col-md-6">
+            <input class="form-control" type="text" ng-model="selected.name">
+        </div>
+    </div>
+
+    <!-- Position Field -->
+    <div class="form-group">
+        <label class="col-md-2">Position</label>
+        <div class="col-md-6">
+            <input class="form-control" type="text" ng-model="selected.position">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2">
+            <button class="btn btn-success" ng-click="saveEmployee()">Save</button>
+            <button class="btn btn-default" ng-click="viewEmployee = false; initAdmin()">Back</button>
+        </div>
+
+        <div class="col-md-offset-2 col-md-2" ng-show="selected.___id">
+            <button class="btn btn-danger" ng-click="deleteEmployee()">Delete</button>
+        </div>
+    </div>
+</form>
